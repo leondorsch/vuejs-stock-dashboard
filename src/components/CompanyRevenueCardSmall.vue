@@ -4,6 +4,10 @@
             <img class="company-img" :src="logo" alt="">
             <span class="company-name">{{ name }}</span>
         </div>
+        <span class="revenue-quartal">Revenue {{ quarter }}</span>
+        <div class="revenue-amount">
+            {{ revenue }}
+        </div>
     </div>
 </template>
 
@@ -11,10 +15,21 @@
 defineProps({
     name: String,
     logo: String,
-    revenue: Number,
+    revenue:  Number,
     delta: Number,
     percent: Number
 })
+
+import { computed } from 'vue';
+
+let quarter = computed(() => {
+    let today = new Date();
+    let year = today.getFullYear();
+    let q = Math.floor((today.getMonth()  ) / 4);
+    return `Q${q} ${year}`;
+});
+
+
 </script>
 
 <style scoped>
@@ -25,6 +40,7 @@ defineProps({
     width: 172px;
     height: 142px;
     display: flex;
+    flex-direction: column;
     gap: 8px;
 }
 
@@ -47,5 +63,11 @@ defineProps({
     font-size: 20px;
     line-height: 100%;
     letter-spacing: 0%;
+}
+
+.revenue-quartal {
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 400;
 }
 </style>

@@ -56,7 +56,7 @@ body {
   margin: 0;
   font-family: 'Rubik', sans-serif;
   color: #FFFFFF;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 #app {
